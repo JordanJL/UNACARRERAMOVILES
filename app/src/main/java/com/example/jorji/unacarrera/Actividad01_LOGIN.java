@@ -9,8 +9,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Actividad01 extends AppCompatActivity {
-
+public class Actividad01_LOGIN extends AppCompatActivity {
+    // url to create new product
+    private static String url_create_product = "http://www.cursoplataformasmoviles.com/unacarrera/usuario/get_all_products.php";
+    // JSON Node names
+    private static final String TAG_SUCCESS = "success";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

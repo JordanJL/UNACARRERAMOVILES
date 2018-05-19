@@ -11,7 +11,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
 
 import org.apache.http.NameValuePair;
@@ -32,12 +31,15 @@ public class RegistroUsuario extends AppCompatActivity {
     EditText txt_cedula;
     EditText txt_apellido;
     EditText txt_dir;
-    EditText txt_anno;
+    String txt_anno;
+    String txt_semestre;
+    EditText txt_contrasenna;
     EditText txt_tel;
     Button btnCreateProduct;
-
+    Spinner s1;
+    Spinner s2;
     // url to create new product
-    private static String url_create_product = "http://www.cursoplataformasmoviles.com/unacarrera/usuario/create_product.php";
+    private static String url_create_product = "http://www.cursoplataformasmoviles.com/unacarrera/usuario/get_product_details.php";
 
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
@@ -47,13 +49,13 @@ public class RegistroUsuario extends AppCompatActivity {
         setContentView(R.layout.activity_registrousuario);
         CargarSpinner();
         // Edit Text
+
          txt_cedula = (EditText) findViewById(R.id.txtCedula);
          txt_nombre = (EditText) findViewById(R.id.txtNombre);
          txt_apellido = (EditText) findViewById(R.id.txtApellido);
          txt_tel = (EditText) findViewById(R.id.txtTel);
          txt_dir= (EditText) findViewById(R.id.txtDir);
-
-
+         txt_contrasenna= (EditText) findViewById(R.id.txtContra);
 
 
         // Create button
@@ -70,33 +72,58 @@ public class RegistroUsuario extends AppCompatActivity {
         });
     }
     private void CargarSpinner() {
-        Spinner s1;
-        final String[] presidents = {"Escoja su año de carrera",
-                "Primer año",
-                "Segundo año",
-                "Tercer año",
-                "Cuarto año"
-        };
 
+        Object item;
+        String[] anno = {"Seleccione ",
+                "Primer",
+                "Segundo",
+                "Tercer",
+                "Cuarto"
+        };
+        String[] semestre = {"Escoja Ciclo Actual",
+                "I CICLO",
+                "II CICLO"
+        };
         //---Spinner View---
         s1 = (Spinner) findViewById(R.id.spinner01);
+        s2 = (Spinner) findViewById(R.id.spinner02);
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                this, android.R.layout.simple_spinner_item, presidents);
+                this, android.R.layout.simple_spinner_item, anno);
+
+        final ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, semestre);
+
+
         s1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
-                //Poner esto antes del Mensaje
                 if (conta==0){conta++; return;}
-                 //Mensaje(presidents[position]);
+                //Mensaje(presidents[position]);
+                txt_anno = (String) parent.getItemAtPosition(position);
 
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-
+        s2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                //Poner esto antes del Mensaje
+                if (conta==0){conta++; return;}
+                //Mensaje(presidents[position]);
+                txt_semestre = (String) parent.getItemAtPosition(position);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
         s1.setAdapter(adapter);
+
+        s2.setAdapter(adapter2);
 
 
     }// fin de CargarSpinner
@@ -118,25 +145,29 @@ public class RegistroUsuario extends AppCompatActivity {
          * Creating product
          * */
         protected String doInBackground(String... args) {
-            //Metodo que carga el spiner
+            System.out.println("Entro aqui");
 
             String nombre = txt_nombre.getText().toString();
             String apellidos = txt_cedula.getText().toString();
-            String telefono = txt_dir.getText().toString();
+            String contrasenna= txt_contrasenna.getText().toString();
+            String telefono = txt_tel.getText().toString();
             String direccion = txt_dir.getText().toString();
             String cedula = txt_cedula.getText().toString();
-            String anno= "2018-12-01";
+            String anno= txt_anno;
+            String semestre= txt_semestre;
             String campus="COTO";
             String estado="A";
             // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("nombre", nombre));
             params.add(new BasicNameValuePair("cedula", cedula));
+            params.add(new BasicNameValuePair("nombre", nombre));
             params.add(new BasicNameValuePair("apellidos", apellidos));
+            params.add(new BasicNameValuePair("contrasenna", contrasenna));
             params.add(new BasicNameValuePair("telefono", telefono));
             params.add(new BasicNameValuePair("direccion", direccion));
             params.add(new BasicNameValuePair("campus", campus));
             params.add(new BasicNameValuePair("anno", anno));
+            params.add(new BasicNameValuePair("semestre", semestre));
             params.add(new BasicNameValuePair("estado", estado));
 
 
@@ -154,11 +185,13 @@ public class RegistroUsuario extends AppCompatActivity {
 
                 if (success == 1) {
                     // successfully created product
-                    // Intent i = new Intent(getApplicationContext(), ass);
+                     //Intent i = new Intent(getApplicationContext(), apñ);
                     //startActivity(i);
 
+                    Intent intento = new Intent(getApplicationContext(), Actividad01_LOGIN.class);
+                    startActivity(intento);
                     // closing this screen
-                    finish();
+                    //finish();
                 } else {
                     // failed to create product
                 }
