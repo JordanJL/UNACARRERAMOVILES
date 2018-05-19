@@ -48,7 +48,7 @@ public class Actividad01 extends AppCompatActivity {
 
                     case R.id.txtregistrar:
 
-                        Intent intento = new Intent(getApplicationContext(), Actividad02.class);
+                        Intent intento = new Intent(getApplicationContext(), RegistroUsuario.class);
                         startActivity(intento);
 
                         break;
