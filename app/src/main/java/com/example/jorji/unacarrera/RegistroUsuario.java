@@ -1,14 +1,18 @@
 package com.example.jorji.unacarrera;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -22,7 +26,7 @@ public class RegistroUsuario extends AppCompatActivity {
 
     // Progress Dialog
     private ProgressDialog pDialog;
-
+    private int conta=0;
     JSONParser jsonParser = new JSONParser();
     public EditText txt_nombre;
     EditText txt_cedula;
@@ -41,14 +45,14 @@ public class RegistroUsuario extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrousuario);
-
+        CargarSpinner();
         // Edit Text
          txt_cedula = (EditText) findViewById(R.id.txtCedula);
          txt_nombre = (EditText) findViewById(R.id.txtNombre);
          txt_apellido = (EditText) findViewById(R.id.txtApellido);
          txt_tel = (EditText) findViewById(R.id.txtTel);
          txt_dir= (EditText) findViewById(R.id.txtDir);
-         txt_anno = (EditText) findViewById(R.id.txtAnno);
+
 
 
 
@@ -65,7 +69,37 @@ public class RegistroUsuario extends AppCompatActivity {
             }
         });
     }
+    private void CargarSpinner() {
+        Spinner s1;
+        final String[] presidents = {"Escoja su año de carrera",
+                "Primer año",
+                "Segundo año",
+                "Tercer año",
+                "Cuarto año"
+        };
 
+        //---Spinner View---
+        s1 = (Spinner) findViewById(R.id.spinner01);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, presidents);
+        s1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                //Poner esto antes del Mensaje
+                if (conta==0){conta++; return;}
+                 //Mensaje(presidents[position]);
+
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        s1.setAdapter(adapter);
+
+
+    }// fin de CargarSpinner
     /**
      * Background Async Task to Create new product
      * */
@@ -84,13 +118,14 @@ public class RegistroUsuario extends AppCompatActivity {
          * Creating product
          * */
         protected String doInBackground(String... args) {
+            //Metodo que carga el spiner
 
             String nombre = txt_nombre.getText().toString();
             String apellidos = txt_cedula.getText().toString();
             String telefono = txt_dir.getText().toString();
             String direccion = txt_dir.getText().toString();
             String cedula = txt_cedula.getText().toString();
-            String anno= txt_anno.getText().toString();
+            String anno= "2018-12-01";
             String campus="COTO";
             String estado="A";
             // Building Parameters
@@ -121,7 +156,7 @@ public class RegistroUsuario extends AppCompatActivity {
                     // successfully created product
                     // Intent i = new Intent(getApplicationContext(), ass);
                     //startActivity(i);
-                    
+
                     // closing this screen
                     finish();
                 } else {
