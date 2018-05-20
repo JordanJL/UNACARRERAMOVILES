@@ -19,7 +19,6 @@
         </activity>
         <activity android:label="Registro"
             android:name=".RegistroUsuario" />
-        <activity android:name=".get_all_products" />
         <activity android:name=".Actividad02_MENU" />
         <activity android:name=".Actividad03" />
         <activity android:name=".Actividad04" />

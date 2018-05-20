@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -39,7 +40,7 @@ public class RegistroUsuario extends AppCompatActivity {
     Spinner s1;
     Spinner s2;
     // url to create new product
-    private static String url_create_product = "http://www.cursoplataformasmoviles.com/unacarrera/usuario/get_product_details.php";
+    private static String url_create_product = "http://www.cursoplataformasmoviles.com/unacarrera/usuario/create_product.php";
 
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
@@ -188,6 +189,8 @@ public class RegistroUsuario extends AppCompatActivity {
                     //startActivity(i);
                     // closing this screen
                     //finish();
+                    Intent intento = new Intent(getApplicationContext(), Actividad01_LOGIN.class);
+                    startActivity(intento);
                 } else {
                     // failed to create product
                 }
