@@ -10,18 +10,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Actividad01_LOGIN"
-            android:label="LOGIN">
+        <activity android:name=".LOGIN.Actividad01_LOGIN"
+            android:label="LOGIN"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Actividad02_MENU" android:label="Menu Principal"/>
-        <activity android:name=".Actividad03_MATRICULA" android:label="Matricula"  />
-        <activity android:name=".Actividad04" />
-        <activity android:name=".Actividad05"/>
-        <activity android:name=".RegistroUsuario"
+        <activity android:name=".MENU.Actividad02_MENU" android:label="Menu Principal"/>
+        <activity android:name=".MATRICULA.Actividad03_MATRICULA" android:label="Matricula"  />
+        <activity android:name=".CRONOGRAMA.Actividad04_CRONOGRAMA" android:label="Cronograma de actividades" />
+        <activity android:name=".MALLACURRICULAR.Actividad05_MALLA" android:label="Malla Curricular"/>
+        <activity android:name=".LOGIN.RegistroUsuario"
             android:label="Registro Usuario"/>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
