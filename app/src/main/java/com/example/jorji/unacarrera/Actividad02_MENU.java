@@ -7,14 +7,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class Actividad02 extends AppCompatActivity {
+public class Actividad02_MENU extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actividad02);
         // A continuación mi código para OnCreate
-        Mensaje("Bienvenido Actividad 01");
         // alambramos el Button
         Button MiButton = (Button) findViewById(R.id.btnCompletado);
 

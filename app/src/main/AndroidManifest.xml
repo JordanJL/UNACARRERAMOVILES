@@ -6,7 +6,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="Login"
+
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -17,9 +17,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegistroUsuario" />
+        <activity android:label="Registro"
+            android:name=".RegistroUsuario" />
         <activity android:name=".get_all_products" />
-        <activity android:name=".Actividad02" />
+        <activity android:name=".Actividad02_MENU" />
         <activity android:name=".Actividad03" />
         <activity android:name=".Actividad04" />
         <activity android:name=".Actividad05"></activity>
