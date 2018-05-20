@@ -12,26 +12,10 @@ public class Actividad02_MENU extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_actividad02);
+        setContentView(R.layout.activity_actividad02_menu);
         // A continuación mi código para OnCreate
         // alambramos el Button
-        Button MiButton = (Button) findViewById(R.id.btnCompletado);
 
-        //Programamos el evento onclick
-
-        MiButton.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-
-            public void onClick(View arg0) {
-
-                // escriba lo que desea hacer
-                Intent intento = new Intent(getApplicationContext(), Actividad03.class);
-                startActivity(intento);
-
-            }
-
-        });
 
     } // Fin del Oncreate de la Actividad 01
 

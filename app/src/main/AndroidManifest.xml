@@ -10,19 +10,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Actividad01_LOGIN">
+        <activity android:name=".Actividad01_LOGIN"
+            android:label="LOGIN">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:label="Registro"
-            android:name=".RegistroUsuario" />
-        <activity android:name=".Actividad02_MENU" />
-        <activity android:name=".Actividad03" />
+        <activity android:name=".Actividad02_MENU" android:label="Menu Principal"/>
+        <activity android:name=".Actividad03_MATRICULA" android:label="Matricula"  />
         <activity android:name=".Actividad04" />
-        <activity android:name=".Actividad05"></activity>
+        <activity android:name=".Actividad05"/>
+        <activity android:name=".RegistroUsuario"
+            android:label="Registro Usuario"/>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

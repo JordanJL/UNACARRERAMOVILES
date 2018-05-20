@@ -14,6 +14,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -25,15 +26,6 @@ import android.widget.Toast;
 
 public class Actividad01_LOGIN extends AppCompatActivity {
 
-    Button ingresar;
-    String cedula;
-    // JSON parser class
-    JSONParser jsonParser = new JSONParser();
-    // url to create new product
-    private static String url_product_detials = "http://www.cursoplataformasmoviles.com/unacarrera/usuario/get_product_details.php";
-    // JSON Node names
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,15 +35,13 @@ public class Actividad01_LOGIN extends AppCompatActivity {
         OnclickDelTextView(R.id.txtregistrar);
         OnclickDelTextView(R.id.txtolvido);
 
-
     } // Fin del Oncreate de la Actividad 01
 
-    public void Mensaje(String msg){
+    public void   Mensaje(String msg){
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();};
 
 
   public void OnclickDelTextView(int ref) {
-
         // Ejemplo  OnclickDelTextView(R.id.MiTextView);
         // 1 Doy referencia al TextView
         View view =findViewById(ref);
@@ -73,6 +63,10 @@ public class Actividad01_LOGIN extends AppCompatActivity {
 
                     case R.id.txtingresar:
 
+                        Intent intento2 = new Intent(getApplicationContext(), Actividad02_MENU.class);
+                        startActivity(intento2);
+
+                        //new GetProductDetails().execute();
                         break;
 
                     case R.id.txtolvido:
@@ -82,6 +76,5 @@ public class Actividad01_LOGIN extends AppCompatActivity {
             }// fin del onclick
         });
     }// fin de OnclickDelTextView
-
 
 }

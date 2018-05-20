@@ -28,17 +28,6 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         tools:text="Usuario" />
 
-    <EditText
-        android:id="@+id/contra"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:text="Contraseña"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usuario" />
-
     <TextView
         android:id="@+id/txtolvido"
         android:layout_width="217dp"
@@ -76,33 +65,13 @@
         android:id="@+id/txtingresar"
         android:layout_width="163dp"
         android:layout_height="41dp"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="16dp"
         android:text="Ingresar"
         android:textColor="@android:color/background_dark"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/contra" />
-
-    <TextView
-        android:id="@+id/inputUsuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/inputcontra"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btningresar"
@@ -113,5 +82,16 @@
         android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/contra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="******"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usuario" />
 
 </android.support.constraint.ConstraintLayout>
