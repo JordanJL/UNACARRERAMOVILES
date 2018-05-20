@@ -18,6 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegistroUsuario" />
+        <activity android:name=".get_all_products" />
         <activity android:name=".Actividad02" />
         <activity android:name=".Actividad03" />
         <activity android:name=".Actividad04" />

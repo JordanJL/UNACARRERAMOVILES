@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        tools:layout_editor_absoluteY="54dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,107 +20,63 @@
                 android:layout_width="match_parent"
                 android:layout_height="1200dp">
 
-                <TextView
-                    android:id="@+id/textView14"
-                    android:layout_width="57dp"
-                    android:layout_height="28dp"
-                    android:layout_marginStart="44dp"
-                    android:layout_marginTop="112dp"
-                    android:text="Cedula:"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
                 <EditText
                     android:id="@+id/txtCedula"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginTop="100dp"
+                    android:layout_width="298dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginTop="104dp"
+                    android:autoText="false"
                     android:ems="10"
+                    android:hint="Digite Cedula (Este será su Usuario)"
                     android:inputType="number"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/textView16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="636dp"
-                    android:layout_marginStart="44dp"
-                    android:text="Nombre:"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
                 <EditText
                     android:id="@+id/txtNombre"
-                    android:layout_width="wrap_content"
+                    android:layout_width="298dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginTop="380dp"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginTop="316dp"
                     android:ems="10"
+                    android:hint="Digite su Nombre"
                     android:inputType="textPersonName"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtCedula" />
 
-                <TextView
-                    android:id="@+id/textView17"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-                    android:layout_marginTop="28dp"
-                    android:text="Apellidos:"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView16" />
-
                 <EditText
                     android:id="@+id/txtApellido"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginTop="580dp"
+                    android:layout_width="298dp"
+                    android:layout_height="0dp"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginTop="544dp"
                     android:ems="10"
+                    android:hint="Digite su Apellido"
                     android:inputType="textPersonName"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/textView18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="56dp"
-                    android:layout_marginTop="36dp"
-                    android:text="Tel:"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView17" />
-
                 <EditText
                     android:id="@+id/txtTel"
-                    android:layout_width="212dp"
+                    android:layout_width="298dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginTop="632dp"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginTop="624dp"
                     android:ems="10"
+                    android:hint="Digite su Teléfono"
                     android:inputType="number"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/textView19"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginTop="28dp"
-                    android:text="Dirección:"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView18" />
-
                 <EditText
                     android:id="@+id/txtDir"
-                    android:layout_width="wrap_content"
+                    android:layout_width="298dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginTop="684dp"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginTop="712dp"
                     android:ems="10"
+                    android:hint="Digite su lugar de Residencia"
                     android:inputType="textPersonName"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -128,22 +84,22 @@
                 <TextView
                     android:id="@+id/textView21"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginTop="36dp"
-                    android:text="Campus:"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView19" />
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="748dp"
+                    android:layout_marginStart="128dp"
+                    android:text="Campus:    COTO"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
                     android:id="@+id/textView22"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginBottom="376dp"
+                    android:layout_marginStart="44dp"
                     android:text="Año:"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView21" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
                     android:id="@+id/textView23"
@@ -154,6 +110,7 @@
                     android:text="Registro de Usuario"
                     android:textColor="@android:color/black"
                     android:textSize="24sp"
+
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -161,7 +118,7 @@
                     android:id="@+id/textView24"
                     android:layout_width="90dp"
                     android:layout_height="24dp"
-                    android:layout_marginBottom="228dp"
+                    android:layout_marginBottom="200dp"
                     android:layout_marginEnd="124dp"
                     android:text="Press to add"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -181,18 +138,8 @@
                     android:id="@+id/spinner01"
                     android:layout_width="254dp"
                     android:layout_height="33dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginTop="788dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/textView15"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="112dp"
-                    android:layout_marginTop="748dp"
-                    android:text="COTO"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginTop="800dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -200,8 +147,8 @@
                     android:id="@+id/textView20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="332dp"
-                    android:layout_marginStart="40dp"
+                    android:layout_marginBottom="292dp"
+                    android:layout_marginStart="36dp"
                     android:text="Semestre"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -210,47 +157,31 @@
                     android:id="@+id/spinner02"
                     android:layout_width="168dp"
                     android:layout_height="29dp"
-                    android:layout_marginEnd="36dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="68dp"
+                    android:layout_marginTop="52dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/spinner01" />
 
                 <EditText
                     android:id="@+id/editText8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginTop="172dp"
+                    android:layout_width="298dp"
+                    android:layout_height="43dp"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginTop="192dp"
                     android:ems="10"
+                    android:hint="Digite su contraseña"
                     android:inputType="textPassword"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="19dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="188dp"
-                    android:text="Contraseña:"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/textView29"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="268dp"
-                    android:text="Confirma Contraseña: "
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
                 <EditText
                     android:id="@+id/txtContra"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginTop="252dp"
+                    android:layout_width="298dp"
+                    android:layout_height="46dp"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginTop="284dp"
                     android:ems="10"
+                    android:hint="Confirmar su contraseña"
                     android:inputType="textPassword"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -260,7 +191,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="96dp"
-                    android:layout_marginTop="420dp"
+                    android:layout_marginTop="380dp"
                     android:text="Datos Personales"
                     android:textColor="@android:color/background_dark"
                     android:textSize="24sp"

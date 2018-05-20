@@ -182,14 +182,10 @@ public class RegistroUsuario extends AppCompatActivity {
             // check for success tag
             try {
                 int success = json.getInt(TAG_SUCCESS);
-
                 if (success == 1) {
                     // successfully created product
                      //Intent i = new Intent(getApplicationContext(), apñ);
                     //startActivity(i);
-
-                    Intent intento = new Intent(getApplicationContext(), Actividad01_LOGIN.class);
-                    startActivity(intento);
                     // closing this screen
                     //finish();
                 } else {
