@@ -24,6 +24,7 @@
         <activity android:name=".MALLACURRICULAR.Actividad05_MALLA" android:label="Malla Curricular"/>
         <activity android:name=".LOGIN.RegistroUsuario"
             android:label="Registro Usuario"/>
+        <activity android:name=".CALENDAR.Actividad_cronograma2"/>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

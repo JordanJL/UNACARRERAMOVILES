@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.jorji.unacarrera.CALENDAR.Actividad_cronograma2;
 import com.example.jorji.unacarrera.MATRICULA.Actividad03_MATRICULA;
 import com.example.jorji.unacarrera.CRONOGRAMA.Actividad04_CRONOGRAMA;
 import com.example.jorji.unacarrera.MALLACURRICULAR.Actividad05_MALLA;
@@ -49,7 +50,7 @@ public class Actividad02_MENU extends AppCompatActivity {
 
                     case R.id.btnCronograma:
 
-                        Intent crono = new Intent(getApplicationContext(), Actividad04_CRONOGRAMA.class);
+                        Intent crono = new Intent(getApplicationContext(), Actividad_cronograma2.class);
                         startActivity(crono);
                         break;
 

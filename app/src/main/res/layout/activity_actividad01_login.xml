@@ -15,18 +15,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/una" />
 
-    <EditText
-        android:id="@+id/usuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="44dp"
-        android:ems="10"
-        android:hint="Usuario"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
-
     <TextView
         android:id="@+id/txtolvido"
         android:layout_width="217dp"
@@ -55,9 +43,9 @@
         android:layout_width="194dp"
         android:layout_height="48dp"
         android:layout_marginStart="92dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="76dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contra"
+        app:layout_constraintTop_toBottomOf="@+id/txt_contrasenna"
         app:srcCompat="@drawable/enter" />
 
     <TextView
@@ -65,23 +53,12 @@
         android:layout_width="138dp"
         android:layout_height="37dp"
         android:layout_marginStart="120dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:text="         Ingresar"
         android:textColor="@android:color/background_dark"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contra" />
-
-    <EditText
-        android:id="@+id/contra"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:ems="10"
-        android:hint="******"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usuario" />
+        app:layout_constraintTop_toTopOf="@+id/imageView4" />
 
     <TextView
         android:id="@+id/textView15"
@@ -103,5 +80,33 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+    <EditText
+        android:id="@+id/txt_usuario"
+        android:layout_width="252dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="Usuario(Ej:604290185)"
+        android:inputType="textPersonName"
+        android:textColor="#979191"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+    <EditText
+        android:id="@+id/txt_contrasenna"
+        android:layout_width="252dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:textColor="#979191"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_usuario" />
 
 </android.support.constraint.ConstraintLayout>
