@@ -1,15 +1,17 @@
-package com.example.jorji.unacarrera;
+package com.example.jorji.unacarrera.CRONOGRAMA;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
-public class Actividad04 extends AppCompatActivity {
+import com.example.jorji.unacarrera.R;
+
+public class Actividad04_CRONOGRAMA extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_actividad04);
+        setContentView(R.layout.activity_actividad04_cronograma);
         // A continuación mi código para OnCreate
         Mensaje("Bienvenido Actividad 04");
 
