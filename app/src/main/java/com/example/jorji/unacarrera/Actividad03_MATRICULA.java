@@ -1,4 +1,4 @@
-package com.example.jorji.unacarrera.MATRICULA;
+package com.example.jorji.unacarrera;
 
 
 import android.content.Intent;
@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
-
-import com.example.jorji.unacarrera.R;
 
 public class Actividad03_MATRICULA extends AppCompatActivity {
 
@@ -20,5 +18,5 @@ public class Actividad03_MATRICULA extends AppCompatActivity {
 
     } // Fin del Oncreate de la Actividad 01
 
-
+   
 } // [13:27:50] Fin de la Clase Actividad 01

@@ -1,4 +1,4 @@
-package com.example.jorji.unacarrera.LOGIN;
+package com.example.jorji.unacarrera;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -12,10 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-
-import com.example.jorji.unacarrera.JSONParser;
-import com.example.jorji.unacarrera.LOGIN.Actividad01_LOGIN;
-import com.example.jorji.unacarrera.R;
+import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -150,6 +147,7 @@ public class RegistroUsuario extends AppCompatActivity {
          * */
         protected String doInBackground(String... args) {
             System.out.println("Entro aqui");
+
             String nombre = txt_nombre.getText().toString();
             String apellidos = txt_cedula.getText().toString();
             String contrasenna= txt_contrasenna.getText().toString();
@@ -162,16 +160,17 @@ public class RegistroUsuario extends AppCompatActivity {
             String estado="A";
             // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
-                params.add(new BasicNameValuePair("cedula", cedula));
-                params.add(new BasicNameValuePair("nombre", nombre));
-                params.add(new BasicNameValuePair("apellidos", apellidos));
-                params.add(new BasicNameValuePair("contrasenna", contrasenna));
-                params.add(new BasicNameValuePair("telefono", telefono));
-                params.add(new BasicNameValuePair("direccion", direccion));
-                params.add(new BasicNameValuePair("campus", campus));
-                params.add(new BasicNameValuePair("anno", anno));
-                params.add(new BasicNameValuePair("semestre", semestre));
-                params.add(new BasicNameValuePair("estado", estado));
+            params.add(new BasicNameValuePair("cedula", cedula));
+            params.add(new BasicNameValuePair("nombre", nombre));
+            params.add(new BasicNameValuePair("apellidos", apellidos));
+            params.add(new BasicNameValuePair("contrasenna", contrasenna));
+            params.add(new BasicNameValuePair("telefono", telefono));
+            params.add(new BasicNameValuePair("direccion", direccion));
+            params.add(new BasicNameValuePair("campus", campus));
+            params.add(new BasicNameValuePair("anno", anno));
+            params.add(new BasicNameValuePair("semestre", semestre));
+            params.add(new BasicNameValuePair("estado", estado));
+
 
             // getting JSON Object
             // Note that create product url accepts POST method
