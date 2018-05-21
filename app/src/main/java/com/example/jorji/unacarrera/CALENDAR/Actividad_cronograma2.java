@@ -19,6 +19,8 @@ import com.example.jorji.unacarrera.R;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -26,8 +28,10 @@ import java.util.Locale;
 
 public class Actividad_cronograma2 extends AppCompatActivity{
 
+
     CompactCalendarView compactCalendar;
-    private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM- yyyy", Locale.getDefault());
+    public Calendar calendario= Calendar.getInstance();
+    private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("dd-M-yyyy hh:mm:ss", Locale.getDefault());
     //Another activity
     private static DatePickerDialog.OnDateSetListener  oyenteSelectorFecha;
     private static final int TIPO_DIALOGO=0;
@@ -44,18 +48,22 @@ public class Actividad_cronograma2 extends AppCompatActivity{
         //Obtener instancia de los controles dentro del layout
         txt_fecha=(EditText) findViewById(R.id.txt_fecha);
         btnfecha= (Button) findViewById(R.id.btnfecha);
-        Calendar calendario= Calendar.getInstance();
+
         anno=calendario.get(Calendar.YEAR);
         mes=calendario.get(Calendar.MONTH+1);
         dia=calendario.get(Calendar.DAY_OF_MONTH);
-        mostrarFecha();
+
         oyenteSelectorFecha = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 anno= year;
                 mes = monthOfYear;
                 dia = dayOfMonth;
-                mostrarFecha();
+                try {
+                    mostrarFecha();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         };
 
@@ -66,20 +74,25 @@ public class Actividad_cronograma2 extends AppCompatActivity{
         compactCalendar = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
         compactCalendar.setUseThreeLetterAbbreviation(true);
 
-        //Set an event for Teachers' Professional Day 2016 which is 21st of October
 
-        Event ev1 = new Event(Color.BLUE, 1526798081000L, "Teachers' Professional Day");
+        Event ev1 = new Event(Color.BLACK, 1526799519000L, "Teachers' Professional Day");
+        Event ev2 = new Event(Color.BLACK, 1525503519000L, "Teachers' Professional Day");
+
         compactCalendar.addEvent(ev1);
+        compactCalendar.addEvent(ev2);
 
         compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
             public void onDayClick(Date dateClicked) {
                 Context context = getApplicationContext();
 
-                if (dateClicked.toString().compareTo("Mon May 7 00:00:00 AST 2018") == 0) {
-                    Toast.makeText(context, "Teachers' Professional Day", Toast.LENGTH_SHORT).show();
+                if (dateClicked.toString().compareTo("Sat May 19 00:00:00 EDT 2018")==0) {
+                    Toast.makeText(context, "PUTO", Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(context, "No Events Planned for that day", Toast.LENGTH_SHORT).show();
+                    Mensaje("datos :"+dateClicked.toString());
+                    Mensaje("datos :"+formatDate(1526799519000L) );
+
                 }
 
 
@@ -103,10 +116,30 @@ public class Actividad_cronograma2 extends AppCompatActivity{
     public void mostrarCalendario(View control){
         showDialog(TIPO_DIALOGO);
     }
-
-    public void mostrarFecha(){
+    int cont=0;
+    public void mostrarFecha() throws ParseException {
         txt_fecha.setText(dia+"/"+(mes+1)+"/"+anno);
+        if (cont==0) {
+            Mensaje("entro");
+            String dateInString = dia + "-" + (mes + 1) + "-" + anno + " 00:00:00L";
+            Date date = dateFormatMonth.parse(dateInString);
+
+            Mensaje("Calender - Time in milliseconds : " + date.getTime());
+            Event ev3 = new Event(Color.BLACK, date.getTime(), "Teachers' Professional Day");
+            compactCalendar.addEvent(ev3);
+            cont++;
+        }
 
 
     }
+
+
+    public void Mensaje(String msg){Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();};
+
+    public String formatDate(long dateInMillis) {
+
+        Date date = new Date(dateInMillis);
+        return dateFormatMonth.getDateInstance().format(date);
+    }
+
 }
