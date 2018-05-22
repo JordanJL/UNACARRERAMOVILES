@@ -128,11 +128,11 @@ public class Actividad01_LOGIN extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(Actividad01_LOGIN.this);
+           /* pDialog = new ProgressDialog(Actividad01_LOGIN.this);
             pDialog.setMessage("Loading product details. Please wait...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
-            pDialog.show();
+            pDialog.show();*/
         }
 
         /**
@@ -146,29 +146,36 @@ public class Actividad01_LOGIN extends AppCompatActivity {
                     // Check for success tag
                     int success;
                     String cedula= txt_cedula.getText().toString();
-                    String contrasenna= txt_contrasenna.getText().toString();
+                    String contrasenna= "'"+txt_contrasenna.getText().toString()+"'";
                     try {
                         // Building Parameters
                         List<NameValuePair> params = new ArrayList<NameValuePair>();
                         params.add(new BasicNameValuePair("cedula", cedula));
+                        params.add(new BasicNameValuePair("contrasenna", contrasenna));
                        // System.out.println("cedula: " +cedula);
 
                         // getting product details by making HTTP request
                         // Note that product details url will use GET request
                         JSONObject json = jsonParser.makeHttpRequest(
                                 url_product_detials, "GET", params);
-                        success = json.getInt(TAG_SUCCESS);
+
+                        success = json.getInt("success");
                         System.out.println(success);
                         // check your log for json response
-                        Log.d("Single Product Details", json.toString());
-                        Mensaje("Single Product Details"+ json.toString());
+                        //Log.d("Single Product Details", json.toString());
+                        //Mensaje("Single Product Details"+ json.toString());
 
                         // json success tag
 
                         System.out.println(success);
                         if (success == 1) {
+                            Mensaje("Bienvenido");
+                           // Mensaje("Datos"+ json.toString());
+                            txt_cedula.setText("");
+                            txt_contrasenna.setText("");
                             Intent intento = new Intent(getApplicationContext(), Actividad02_MENU.class);
                             startActivity(intento);
+
                        }else{
                             Mensaje("Verifique su usuario y contraseña");
                         }
