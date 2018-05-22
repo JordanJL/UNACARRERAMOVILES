@@ -33,7 +33,7 @@ public class Actividad01_LOGIN extends AppCompatActivity {
 
     EditText txt_cedula;
     EditText txtCedula;
-    EditText txtContrasenna;
+    EditText txt_contrasenna;
     // Progress Dialog
     private ProgressDialog pDialog;
 
@@ -63,7 +63,7 @@ public class Actividad01_LOGIN extends AppCompatActivity {
                 .penaltyLog().build());
                         setContentView(R.layout.activity_actividad01_login);
                         txt_cedula = (EditText) findViewById(R.id.txt_usuario);
-
+                        txt_contrasenna= (EditText)findViewById(R.id.txt_contrasenna);
                         OnclickDelTextView(R.id.txtingresar);
                         OnclickDelTextView(R.id.txtregistrar);
                         OnclickDelTextView(R.id.txtolvido);
@@ -146,12 +146,12 @@ public class Actividad01_LOGIN extends AppCompatActivity {
                     // Check for success tag
                     int success;
                     String cedula= txt_cedula.getText().toString();
+                    String contrasenna= txt_contrasenna.getText().toString();
                     try {
                         // Building Parameters
                         List<NameValuePair> params = new ArrayList<NameValuePair>();
                         params.add(new BasicNameValuePair("cedula", cedula));
-
-                        System.out.println("cedula: " +cedula);
+                       // System.out.println("cedula: " +cedula);
 
                         // getting product details by making HTTP request
                         // Note that product details url will use GET request
@@ -167,26 +167,10 @@ public class Actividad01_LOGIN extends AppCompatActivity {
 
                         System.out.println(success);
                         if (success == 1) {
-                            // successfully received product details
-                            JSONArray productObj = json
-                                    .getJSONArray(TAG_CEDULA); // JSON Array
-
-                            // get first product object from JSON Array
-                            JSONObject product = productObj.getJSONObject(0);
-                            System.out.println("mmm: ");
-
-                            // product with this pid found
-                            // Edit Text
-                            txtCedula = (EditText) findViewById(R.id.txt_usuario);
-                            txtContrasenna = (EditText) findViewById(R.id.txtcontrasenna);
-
-
-                            // display product data in EditText
-                            txtCedula.setText(product.getString(TAG_CEDULA));
-                            txtContrasenna.setText(product.getString(TAG_CONTRA));
-
-                        }else{
-                            // product with pid not found
+                            Intent intento = new Intent(getApplicationContext(), Actividad02_MENU.class);
+                            startActivity(intento);
+                       }else{
+                            Mensaje("Verifique su usuario y contraseña");
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();

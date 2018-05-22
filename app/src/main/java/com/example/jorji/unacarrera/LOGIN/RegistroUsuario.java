@@ -157,16 +157,17 @@ public class RegistroUsuario extends AppCompatActivity {
         protected String doInBackground(String... args) {
             System.out.println("Entro aqui");
             String nombre = txt_nombre.getText().toString();
-            String apellidos = txt_cedula.getText().toString();
+            String apellidos = txt_apellido.getText().toString();
             String contrasenna= txt_contrasenna.getText().toString();
             String telefono = txt_tel.getText().toString();
+            String correo= "jdasi";
             String direccion = txt_dir.getText().toString();
             String cedula = txt_cedula.getText().toString();
             String anno= txt_anno;
             String semestre= txt_semestre;
-            String correo= txt_correo.getText().toString();
             String campus="COTO";
             String estado="A";
+
             // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
                 params.add(new BasicNameValuePair("cedula", cedula));
