@@ -6,40 +6,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.github.sundeepk.compactcalendarview.CompactCalendarView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <com.github.sundeepk.compactcalendarview.CompactCalendarView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/compactcalendar_view"
         android:layout_width="fill_parent"
-        android:paddingRight="10dp"
-        android:paddingLeft="10dp"
         android:layout_height="250dp"
-        app:compactCalendarTargetHeight="250dp"
-        app:compactCalendarTextSize="12sp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         app:compactCalendarBackgroundColor="#ffe95451"
-        app:compactCalendarTextColor="#fff"
-        app:compactCalendarCurrentSelectedDayBackgroundColor="#E57373"
-        app:compactCalendarCurrentDayBackgroundColor="#B71C1C"
+        app:compactCalendarCurrentDayBackgroundColor="#cd1500"
+        app:compactCalendarCurrentSelectedDayBackgroundColor="#61221b"
         app:compactCalendarMultiEventIndicatorColor="#fff"
-        />
-
-    <EditText
-        android:id="@+id/txt_fecha"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="212dp"
-        android:ems="10"
-        android:inputType="date"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        app:compactCalendarTargetHeight="300dp"
+        app:compactCalendarTextColor="#fff"
+        app:compactCalendarTextSize="16dp" />
 
     <Button
         android:id="@+id/btnfecha"
         android:layout_width="179dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="168dp"
+        android:layout_marginBottom="124dp"
         android:gravity="center"
         android:onClick="mostrarCalendario"
-        android:text="Seleccionar fecha"
+        android:text="Insertar Evento"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="103dp" />
+
+    <EditText
+        android:id="@+id/txtDescripcion"
+        android:layout_width="349dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="208dp"
+        android:layout_marginEnd="4dp"
+        android:ems="10"
+        android:hint="Descripción del Evento"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </android.support.constraint.ConstraintLayout>

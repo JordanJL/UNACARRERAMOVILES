@@ -27,8 +27,8 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Actividad_cronograma2 extends AppCompatActivity{
-
-
+    Date date;
+    EditText eventos;
     CompactCalendarView compactCalendar;
     public Calendar calendario= Calendar.getInstance();
     private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("dd-M-yyyy hh:mm:ss", Locale.getDefault());
@@ -40,32 +40,38 @@ public class Actividad_cronograma2 extends AppCompatActivity{
     private int dia;
     private EditText txt_fecha;
     private Button btnfecha;
-
+    String evet;
+    int cont=0;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cronograma2);
 
         //Obtener instancia de los controles dentro del layout
-        txt_fecha=(EditText) findViewById(R.id.txt_fecha);
+       // txt_fecha=(EditText) findViewById(R.id.txt_fecha);
         btnfecha= (Button) findViewById(R.id.btnfecha);
-
+        eventos= (EditText) findViewById(R.id.txtDescripcion);
         anno=calendario.get(Calendar.YEAR);
         mes=calendario.get(Calendar.MONTH+1);
         dia=calendario.get(Calendar.DAY_OF_MONTH);
 
-        oyenteSelectorFecha = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                anno= year;
-                mes = monthOfYear;
-                dia = dayOfMonth;
-                try {
-                    mostrarFecha();
-                } catch (ParseException e) {
-                    e.printStackTrace();
+            oyenteSelectorFecha = new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                    anno = year;
+                    mes = monthOfYear;
+                    dia = dayOfMonth;
+                    //if(cont ==0) {
+                    try {
+                        mostrarFecha();
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    //}else {
+                      //  Mensaje("Ya habia entrado");
+                       // cont=0;
+                    //}
                 }
-            }
-        };
+            };
 
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(false);
@@ -75,23 +81,20 @@ public class Actividad_cronograma2 extends AppCompatActivity{
         compactCalendar.setUseThreeLetterAbbreviation(true);
 
 
-        Event ev1 = new Event(Color.BLACK, 1526799519000L, "Teachers' Professional Day");
-        Event ev2 = new Event(Color.BLACK, 1525503519000L, "Teachers' Professional Day");
-
-        compactCalendar.addEvent(ev1);
-        compactCalendar.addEvent(ev2);
 
         compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
             public void onDayClick(Date dateClicked) {
                 Context context = getApplicationContext();
-
+                // CST
                 if (dateClicked.toString().compareTo("Sat May 19 00:00:00 EDT 2018")==0) {
-                    Toast.makeText(context, "PUTO", Toast.LENGTH_SHORT).show();
+                    eventos.setText(evet);
+                    //Toast.makeText(context, "El evento es ir a la U jajaaj" , Toast.LENGTH_SHORT).show();
                 }else {
-                    Toast.makeText(context, "No Events Planned for that day", Toast.LENGTH_SHORT).show();
-                    Mensaje("datos :"+dateClicked.toString());
-                    Mensaje("datos :"+formatDate(1526799519000L) );
+                    //Toast.makeText(context, "No Events Planned for that day", Toast.LENGTH_SHORT).show();
+                    //Mensaje("datos :"+dateClicked.toString());
+                    eventos.setText("No existen eventos en esta fecha");
+                    //Mensaje("datos :"+formatDate(1526799519000L) );
 
                 }
 
@@ -107,6 +110,7 @@ public class Actividad_cronograma2 extends AppCompatActivity{
 
     @Override
     protected Dialog onCreateDialog(int id) {
+        evet=eventos.getText().toString();
         switch (id){
             case 0:
                 return new DatePickerDialog(this,oyenteSelectorFecha,anno,mes,dia);
@@ -116,20 +120,26 @@ public class Actividad_cronograma2 extends AppCompatActivity{
     public void mostrarCalendario(View control){
         showDialog(TIPO_DIALOGO);
     }
-    int cont=0;
+
     public void mostrarFecha() throws ParseException {
-        txt_fecha.setText(dia+"/"+(mes+1)+"/"+anno);
-        if (cont==0) {
+        //txt_fecha.setText(dia+"/"+(mes+1)+"/"+anno);
+
             Mensaje("entro");
             String dateInString = dia + "-" + (mes + 1) + "-" + anno + " 00:00:00L";
-            Date date = dateFormatMonth.parse(dateInString);
+            date = dateFormatMonth.parse(dateInString);
+            eventos.setText("");
+            generadorEventos();
+    }
 
-            Mensaje("Calender - Time in milliseconds : " + date.getTime());
+    private void generadorEventos() {
+        if (cont==0){
             Event ev3 = new Event(Color.BLACK, date.getTime(), "Teachers' Professional Day");
             compactCalendar.addEvent(ev3);
             cont++;
+        }else {
+            Mensaje("Ya habia entrado");
+        cont=0;
         }
-
 
     }
 
