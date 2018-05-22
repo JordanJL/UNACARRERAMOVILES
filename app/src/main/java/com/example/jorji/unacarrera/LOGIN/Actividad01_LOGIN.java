@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -31,26 +32,35 @@ public class Actividad01_LOGIN extends AppCompatActivity {
 
 
     EditText txt_cedula;
-
+    EditText txtCedula;
+    EditText txtContrasenna;
     // Progress Dialog
     private ProgressDialog pDialog;
 
     // JSON parser class
     JSONParser jsonParser = new JSONParser();
-    ArrayList<HashMap<String, String>> productsList;
-    private static final String TAG_PRODUCT = "product";
+
     // single product url
     //private static String url_product_detials = "http://www.cursoplataformasmoviles.com/unacarrera/usuario/get_user_details.php";
-    private static String url_all_products = "http://www.cursoplataformasmoviles.com/unacarrera/usuario/get_all_user_usu_contra.php";
+    private static final String url_product_detials = "http://www.cursoplataformasmoviles.com/unacarrera/usuario/get_user_details.php";
     // JSON Node names
+    // JSON Node names
+    private static final String TAG_SUCCESS = "success";
+    private static final String TAG_CEDULA = "cedula";
+    private static final String TAG_CONTRA = "contrasenna";
+
     // products JSONArray
     JSONArray products = null;
-    private static final String TAG_SUCCESS = "success";
+
     @Override
 
 
                 protected void onCreate(Bundle savedInstanceState) {
                     super.onCreate(savedInstanceState);
+                 StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                .detectDiskReads().detectDiskWrites().detectNetwork()
+                // StrictMode is most commonly used to catch accidental disk or network access on the application's main thread
+                .penaltyLog().build());
                         setContentView(R.layout.activity_actividad01_login);
                         txt_cedula = (EditText) findViewById(R.id.txt_usuario);
 
@@ -58,8 +68,7 @@ public class Actividad01_LOGIN extends AppCompatActivity {
                         OnclickDelTextView(R.id.txtregistrar);
                         OnclickDelTextView(R.id.txtolvido);
 
-                        // Hashmap for ListView
-                        productsList = new ArrayList<HashMap<String, String>>();
+
 
 
                          // Loading products in Background Thread
@@ -93,9 +102,10 @@ public class Actividad01_LOGIN extends AppCompatActivity {
                         break;
 
                     case R.id.txtingresar:
-
-                        Intent intento2 = new Intent(getApplicationContext(), AllProductsActivity.class);
-                        startActivity(intento2);
+                        // Getting complete product details in background thread
+                        new GetProductDetails().execute();
+                      //  Intent intento2 = new Intent(getApplicationContext(), Actividad02_MENU.class);
+                       // startActivity(intento2);
 
                         //new GetProductDetails().execute();
                         break;
@@ -107,5 +117,93 @@ public class Actividad01_LOGIN extends AppCompatActivity {
             }// fin del onclick
         });
     }// fin de OnclickDelTextView
+    /**
+     * Background Async Task to Get complete product details
+     * */
+    class GetProductDetails extends AsyncTask<String, String, String> {
+
+        /**
+         * Before starting background thread Show Progress Dialog
+         * */
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pDialog = new ProgressDialog(Actividad01_LOGIN.this);
+            pDialog.setMessage("Loading product details. Please wait...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
+        }
+
+        /**
+         * Getting product details in background thread
+         * */
+        protected String doInBackground(String... params) {
+
+            // updating UI from Background Thread
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    // Check for success tag
+                    int success;
+                    String cedula= txt_cedula.getText().toString();
+                    try {
+                        // Building Parameters
+                        List<NameValuePair> params = new ArrayList<NameValuePair>();
+                        params.add(new BasicNameValuePair("cedula", cedula));
+
+                        System.out.println("cedula: " +cedula);
+
+                        // getting product details by making HTTP request
+                        // Note that product details url will use GET request
+                        JSONObject json = jsonParser.makeHttpRequest(
+                                url_product_detials, "GET", params);
+                        success = json.getInt(TAG_SUCCESS);
+                        System.out.println(success);
+                        // check your log for json response
+                        Log.d("Single Product Details", json.toString());
+                        Mensaje("Single Product Details"+ json.toString());
+
+                        // json success tag
+
+                        System.out.println(success);
+                        if (success == 1) {
+                            // successfully received product details
+                            JSONArray productObj = json
+                                    .getJSONArray(TAG_CEDULA); // JSON Array
+
+                            // get first product object from JSON Array
+                            JSONObject product = productObj.getJSONObject(0);
+                            System.out.println("mmm: ");
+
+                            // product with this pid found
+                            // Edit Text
+                            txtCedula = (EditText) findViewById(R.id.txt_usuario);
+                            txtContrasenna = (EditText) findViewById(R.id.txtcontrasenna);
+
+
+                            // display product data in EditText
+                            txtCedula.setText(product.getString(TAG_CEDULA));
+                            txtContrasenna.setText(product.getString(TAG_CONTRA));
+
+                        }else{
+                            // product with pid not found
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+            return null;
+        }
+
+        /**
+         * After completing background task Dismiss the progress dialog
+         * **/
+        protected void onPostExecute(String file_url) {
+            // dismiss the dialog once got all details
+            //pDialog.dismiss();
+        }
+    }
 
 }

@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -35,6 +36,7 @@ public class RegistroUsuario extends AppCompatActivity {
     EditText txt_cedula;
     EditText txt_apellido;
     EditText txt_dir;
+    EditText txt_correo;
     String txt_anno;
     String txt_semestre;
     EditText txt_contrasenna;
@@ -51,7 +53,12 @@ public class RegistroUsuario extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrousuario);
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                .detectDiskReads().detectDiskWrites().detectNetwork()
+                // StrictMode is most commonly used to catch accidental disk or network access on the application's main thread
+                .penaltyLog().build());
         CargarSpinner();
+
         // Edit Text
 
          txt_cedula = (EditText) findViewById(R.id.txtCedula);
@@ -60,8 +67,7 @@ public class RegistroUsuario extends AppCompatActivity {
          txt_tel = (EditText) findViewById(R.id.txtTel);
          txt_dir= (EditText) findViewById(R.id.txtDir);
          txt_contrasenna= (EditText) findViewById(R.id.txtContra);
-
-
+         txt_correo= (EditText) findViewById(R.id.txtcorreo);
         // Create button
         btnCreateProduct = (Button) findViewById(R.id.btnCompletado);
 
@@ -158,6 +164,7 @@ public class RegistroUsuario extends AppCompatActivity {
             String cedula = txt_cedula.getText().toString();
             String anno= txt_anno;
             String semestre= txt_semestre;
+            String correo= txt_correo.getText().toString();
             String campus="COTO";
             String estado="A";
             // Building Parameters
@@ -167,6 +174,7 @@ public class RegistroUsuario extends AppCompatActivity {
                 params.add(new BasicNameValuePair("apellidos", apellidos));
                 params.add(new BasicNameValuePair("contrasenna", contrasenna));
                 params.add(new BasicNameValuePair("telefono", telefono));
+                params.add(new BasicNameValuePair("correo", correo));
                 params.add(new BasicNameValuePair("direccion", direccion));
                 params.add(new BasicNameValuePair("campus", campus));
                 params.add(new BasicNameValuePair("anno", anno));
@@ -207,7 +215,7 @@ public class RegistroUsuario extends AppCompatActivity {
          * **/
         protected void onPostExecute(String file_url) {
             // dismiss the dialog once done
-            pDialog.dismiss();
+            //pDialog.dismiss();
         }
 
     }

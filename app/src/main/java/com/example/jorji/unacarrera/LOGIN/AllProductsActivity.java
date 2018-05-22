@@ -141,7 +141,7 @@ public class AllProductsActivity  extends ListActivity {
              * **/
             protected void onPostExecute(String file_url) {
                 // dismiss the dialog after getting all products
-                pDialog.dismiss();
+                //pDialog.dismiss();
                 // updating UI from Background Thread
                 runOnUiThread(new Runnable() {
                     public void run() {
